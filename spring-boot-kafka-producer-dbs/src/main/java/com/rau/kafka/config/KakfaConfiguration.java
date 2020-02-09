@@ -1,6 +1,8 @@
 package com.rau.kafka.config;
 
-import com.rau.kafka.model.Product;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
@@ -10,14 +12,13 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.rau.kafka.dto.ProductDto;
 
 @Configuration
 public class KakfaConfiguration {
 
     @Bean
-    public ProducerFactory<String, Product> producerFactory() {
+    public ProducerFactory<String, ProductDto> producerFactory() {
         Map<String, Object> config = new HashMap<>();
 
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
@@ -29,7 +30,7 @@ public class KakfaConfiguration {
 
 
     @Bean
-    public KafkaTemplate<String, Product> kafkaTemplate() {
+    public KafkaTemplate<String, ProductDto> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 

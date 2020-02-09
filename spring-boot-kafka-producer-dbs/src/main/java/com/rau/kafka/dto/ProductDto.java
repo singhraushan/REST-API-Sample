@@ -1,15 +1,15 @@
-package com.rau.kafka.model;
+package com.rau.kafka.dto;
 
-public class Product {
+public class ProductDto {
 
     private Long id;
     private String name;
     private Double price;
 
-    public Product() {
+    public ProductDto() {
     }
 
-    public Product(Long id, String name, Double price) {
+    public ProductDto(Long id, String name, Double price) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -38,4 +38,10 @@ public class Product {
     public Double getPrice() {
         return price;
     }
+
+	@Override
+	public String toString() {
+		return "ProductDto [id=" + id + ", name=" + name + ", price=" + price + "]";
+	}
+    
 }
